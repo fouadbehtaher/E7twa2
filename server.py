@@ -4,19 +4,49 @@
 from __future__ import annotations
 
 import os
+import socket
 import sys
 from http.server import SimpleHTTPRequestHandler
 from pathlib import Path
-from socketserver import TCPServer
+from socketserver import TCPServer, ThreadingMixIn
 
 
 ROOT_DIR = Path(__file__).resolve().parent
-HOST = os.environ.get("HOST", "127.0.0.1")
+HOST = os.environ.get("HOST", "0.0.0.0")
 PORT = int(os.environ.get("PORT", "3000"))
 
 
-class ReusableTCPServer(TCPServer):
+def get_local_ipv4_addresses() -> list[str]:
+    addresses: list[str] = []
+    seen: set[str] = set()
+
+    try:
+        with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
+            sock.connect(("8.8.8.8", 80))
+            primary_ip = sock.getsockname()[0]
+            if not primary_ip.startswith(("127.", "169.254.")):
+                seen.add(primary_ip)
+                addresses.append(primary_ip)
+    except OSError:
+        pass
+
+    try:
+        hostname = socket.gethostname()
+        for result in socket.getaddrinfo(hostname, None, family=socket.AF_INET):
+            ip = result[4][0]
+            if ip.startswith(("127.", "169.254.")) or ip in seen:
+                continue
+            seen.add(ip)
+            addresses.append(ip)
+    except socket.gaierror:
+        pass
+
+    return addresses
+
+
+class ReusableThreadingTCPServer(ThreadingMixIn, TCPServer):
     allow_reuse_address = True
+    daemon_threads = True
 
 
 class AppRequestHandler(SimpleHTTPRequestHandler):
@@ -28,11 +58,43 @@ class AppRequestHandler(SimpleHTTPRequestHandler):
             self.path = "/index.html"
         return super().do_GET()
 
+    def do_OPTIONS(self):
+        self.send_response(204)
+        self.end_headers()
+
     def end_headers(self):
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
         super().end_headers()
+
+
+def print_access_urls() -> None:
+    print("=" * 60)
+    print("Ehtewaa local server is running")
+    print("=" * 60)
+    print(f"Local device: http://localhost:{PORT}/index.html")
+
+    if HOST in {"0.0.0.0", "::", ""}:
+        network_urls = [f"http://{ip}:{PORT}/index.html" for ip in get_local_ipv4_addresses()]
+        if network_urls:
+            print(f"Recommended for other devices: {network_urls[0]}")
+            if len(network_urls) > 1:
+                print("Additional network adapters:")
+                for url in network_urls[1:]:
+                    print(f"  {url}")
+        else:
+            print("Other devices can open the app using this computer IP and port.")
+    elif HOST not in {"127.0.0.1", "localhost"}:
+        print("Other devices can open:")
+        print(f"  http://{HOST}:{PORT}/index.html")
+    else:
+        print("LAN access is disabled. Set HOST=0.0.0.0 to allow other devices.")
+
+    print(f"Host binding: {HOST}:{PORT}")
+    print("=" * 60)
+    print("Press Ctrl+C to stop")
+    print("=" * 60)
 
 
 def main() -> None:
@@ -43,17 +105,8 @@ def main() -> None:
 
     os.chdir(ROOT_DIR)
 
-    with ReusableTCPServer((HOST, PORT), AppRequestHandler) as httpd:
-        print("=" * 50)
-        print("Ehtewaa local server is running")
-        print("=" * 50)
-        print(f"Home:      http://{HOST}:{PORT}/index.html")
-        print(f"Login:     http://{HOST}:{PORT}/login.html")
-        print(f"Signup:    http://{HOST}:{PORT}/signup.html")
-        print(f"Dashboard: http://{HOST}:{PORT}/dashboard.html")
-        print("=" * 50)
-        print("Press Ctrl+C to stop")
-        print("=" * 50)
+    with ReusableThreadingTCPServer((HOST, PORT), AppRequestHandler) as httpd:
+        print_access_urls()
         httpd.serve_forever()
 
 

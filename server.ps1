@@ -1,6 +1,14 @@
 $Port = 3000
+$HostName = "0.0.0.0"
 $RootPath = Split-Path -Parent $MyInvocation.MyCommand.Path
-$HostName = "localhost"
+
+if ($env:PORT) {
+    $Port = [int]$env:PORT
+}
+
+if ($env:HOST) {
+    $HostName = $env:HOST
+}
 
 $MimeTypes = @{
     ".css"  = "text/css; charset=utf-8"
@@ -63,25 +71,92 @@ function Resolve-RequestPath {
     return $fullPath
 }
 
-$listener = [System.Net.Sockets.TcpListener]::new([System.Net.IPAddress]::Loopback, $Port)
+function Get-LocalIPv4Addresses {
+    $networkInterfaces = [System.Net.NetworkInformation.NetworkInterface]::GetAllNetworkInterfaces() |
+        Where-Object { $_.OperationalStatus -eq [System.Net.NetworkInformation.OperationalStatus]::Up }
+
+    $addresses = foreach ($networkInterface in $networkInterfaces) {
+        foreach ($address in $networkInterface.GetIPProperties().UnicastAddresses) {
+            if ($address.Address.AddressFamily -ne [System.Net.Sockets.AddressFamily]::InterNetwork) {
+                continue
+            }
+
+            $ip = $address.Address.IPAddressToString
+            if ($ip -like "127.*" -or $ip -like "169.254.*") {
+                continue
+            }
+
+            $ip
+        }
+    }
+
+    return $addresses | Select-Object -Unique
+}
+
+function Get-BindAddress {
+    param([string]$RequestedHost)
+
+    if ([string]::IsNullOrWhiteSpace($RequestedHost) -or $RequestedHost -eq "0.0.0.0" -or $RequestedHost -eq "*" -or $RequestedHost -eq "+") {
+        return [System.Net.IPAddress]::Any
+    }
+
+    if ($RequestedHost -eq "localhost") {
+        return [System.Net.IPAddress]::Loopback
+    }
+
+    try {
+        return [System.Net.IPAddress]::Parse($RequestedHost)
+    }
+    catch {
+        $resolvedAddress = [System.Net.Dns]::GetHostAddresses($RequestedHost) |
+            Where-Object { $_.AddressFamily -eq [System.Net.Sockets.AddressFamily]::InterNetwork } |
+            Select-Object -First 1
+
+        if (-not $resolvedAddress) {
+            throw "Could not resolve host '$RequestedHost'."
+        }
+
+        return $resolvedAddress
+    }
+}
+
+$bindAddress = Get-BindAddress -RequestedHost $HostName
+$listener = [System.Net.Sockets.TcpListener]::new($bindAddress, $Port)
 $listener.Start()
 
 Write-Host ""
-Write-Host "=========================================="
-Write-Host "Server is running"
-Write-Host "=========================================="
-Write-Host ""
-Write-Host "Accessing: http://${HostName}:$Port"
-Write-Host ""
-Write-Host "Available pages:"
-Write-Host "  - Home: http://${HostName}:$Port/index.html"
-Write-Host "  - Login: http://${HostName}:$Port/login.html"
-Write-Host "  - Signup: http://${HostName}:$Port/signup.html"
-Write-Host "  - Dashboard: http://${HostName}:$Port/dashboard.html"
-Write-Host ""
-Write-Host "=========================================="
+Write-Host "============================================================"
+Write-Host "Ehtewaa local server is running"
+Write-Host "============================================================"
+Write-Host "Local device: http://localhost:$Port/index.html"
+
+if ($bindAddress.Equals([System.Net.IPAddress]::Any)) {
+    $networkUrls = Get-LocalIPv4Addresses | ForEach-Object { "http://$_:$Port/index.html" }
+    if ($networkUrls) {
+        Write-Host "Recommended for other devices: $($networkUrls[0])"
+        if ($networkUrls.Count -gt 1) {
+            Write-Host "Additional network adapters:"
+            foreach ($url in $networkUrls | Select-Object -Skip 1) {
+                Write-Host "  $url"
+            }
+        }
+    }
+    else {
+        Write-Host "Other devices can open the app using this computer IP and port."
+    }
+}
+elseif (-not $bindAddress.Equals([System.Net.IPAddress]::Loopback)) {
+    Write-Host "Other devices can open:"
+    Write-Host "  http://$HostName:$Port/index.html"
+}
+else {
+    Write-Host "LAN access is disabled. Set HOST=0.0.0.0 to allow other devices."
+}
+
+Write-Host "Host binding: $HostName:$Port"
+Write-Host "============================================================"
 Write-Host "Press Ctrl+C to stop"
-Write-Host "=========================================="
+Write-Host "============================================================"
 Write-Host ""
 
 try {
