@@ -1,0 +1,21 @@
+{
+  "name": "ehtewaa-maternity-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static Arabic maternity support web app with a lightweight local Python server.",
+  "main": "server.py",
+  "scripts": {
+    "start": "python -X utf8 server.py",
+    "dev": "python -X utf8 server.py",
+    "serve:powershell": "powershell -ExecutionPolicy Bypass -File server.ps1"
+  },
+  "keywords": [
+    "maternity",
+    "pregnancy",
+    "support",
+    "arabic",
+    "static-site"
+  ],
+  "author": "Ehtewaa Team",
+  "license": "MIT"
+}

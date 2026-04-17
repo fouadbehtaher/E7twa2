@@ -1,0 +1,10 @@
+.vscode/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+Thumbs.db
+.DS_Store
+node_modules/
+server.log
+server-error.log

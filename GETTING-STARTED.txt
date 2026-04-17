@@ -1,0 +1,26 @@
+احتواء - بدء سريع
+=================
+
+1. افتح مجلد المشروع.
+2. شغل الخادم المحلي:
+
+   npm start
+
+   أو:
+
+   python -X utf8 server.py
+
+3. افتح هذا الرابط في المتصفح:
+
+   http://localhost:3000/index.html
+
+أهم الصفحات:
+- الرئيسية: http://localhost:3000/index.html
+- تسجيل الدخول: http://localhost:3000/login.html
+- إنشاء حساب: http://localhost:3000/signup.html
+- لوحة التحكم: http://localhost:3000/dashboard.html
+
+ملاحظات:
+- المشروع ثابت ويعمل بدون Firebase.
+- البيانات تحفظ محليًا داخل المتصفح باستخدام localStorage.
+- ملف server.py للتشغيل المحلي فقط.

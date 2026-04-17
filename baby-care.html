@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ورش رعاية الطفل - احتواء</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #7c55b8 0%, #a975d1 100%);
+      color: #fff;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    header h1 {
+      font-size: 32px;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    header a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #fff;
+      color: #8B6FB3;
+      padding: 12px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .intro,
+    .section {
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 22px;
+      padding: 26px;
+      margin-bottom: 22px;
+    }
+
+    .intro p,
+    .section p {
+      line-height: 1.9;
+      color: #f8eefb;
+    }
+
+    .section h2 {
+      font-size: 26px;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+
+    .section ul {
+      list-style: inside disc;
+      color: #f9efff;
+      line-height: 1.9;
+      padding-left: 0;
+    }
+
+    .section li {
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      color: #ffe29f;
+      font-weight: bold;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .note {
+      margin-top: 14px;
+      color: #fff8cc;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-babycare">
+  <div class="container">
+    <header>
+      <h1>ورش رعاية الطفل</h1>      <nav class="main-nav">
+        <a href="index.html">الرئيسية</a>
+        <a href="services.html">الخدمات</a>
+        <a href="about.html">من نحن</a>
+        <a href="community.html">مجتمع الأمهات</a>
+        <a href="online-services.html">أونلاين</a>
+        <a href="privacy-policy.html">الخصوصية</a>
+      </nav>      <a href="index.html"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a>
+    </header>
+
+    <div class="intro">
+      <p>هذه الورشة موجهة للأمهات الأولى والمحتاجات دليل واضح لطرق رعاية الطفل، وكيفية بناء ثقة أكبر في التعامل مع الطفل الصغير دون خوف من الخطأ.</p>
+    </div>
+
+    <div class="section">
+      <h2>كيفية تغيير الحفاضة (Diaper)</h2>
+      <p>تغيير الحفاضة هو مهارة أساسية للأم الجديدة. إليك الخطوات الأساسية:</p>
+      <ul>
+        <li>حضّري كل الأدوات قبل البدء: حفاضة نظيفة، مناديل مبللة، كريم لحماية البشرة، وصفيحة لينة.</li>
+        <li>ضعي الطفل على ظهره برفق وارفعي قدميه برفق من الركبتين.</li>
+        <li>نظّفي المنطقة جيدًا من الأمام إلى الخلف لتجنب العدوى، ثم جففي البشرة بلطف.</li>
+        <li>ضع الحفاضة النظيفة تحت الطفل، وأغلقيها بحيث تكون مريحة وليست ضيقة.</li>
+      </ul>
+      <p class="note">إذا شعرتِ بالتوتر، تذكّري أن كل أم تتعلم ذلك بمرور الوقت، ولا يوجد تصرف صحيح بنسبة 100% فقط اتجهي بمشاعر لطفك.</p>
+    </div>
+
+    <div class="section grid">
+      <div>
+        <h2>كيفية تهدئة الطفل</h2>
+        <p>التهدئة فن يحتاج إلى صبر وفهم. جرّبي هذه الطرق:</p>
+        <ul>
+          <li>التأرجح برفق أو حاملة الطفل على صدرك.</li>
+          <li>التحدث بصوت ناعم وغناء لحن هادئ.</li>
+          <li>استخدام حركة "الاحتضان المريح" مع لف الطفل بقطعة قماش خفيفة.</li>
+          <li>التأكد من أن الطفل جائع أو يحتاج تغيير حفاضة قبل أي شيء آخر.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>كيفية حمل الطفل بطريقة صحيحة</h2>
+        <p>الحمل الآمن يخفف الضغط عن جسمك ويجعل الطفل يشعر بالأمان.</p>
+        <ul>
+          <li>دائما أدعمي رأس الطفل ورقبته بيدك الأولى عند الإمساك به.</li>
+          <li>استخدمي اليد الثانية لدعم الظهر أو الأرداف عند رفعه.</li>
+          <li>احمليه بالقرب من صدرك لتأمين التوازن.</li>
+          <li>تجنبي الانحناء المفاجئ أو تحريك الطفل بسرعة كبيرة.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section grid">
+      <div>
+        <h2>مواعيد النوم والرضاعة</h2>
+        <p>تنظيم مواعيد الطفل يساعد على بناء روتين مريح لك ولطفلك.</p>
+        <ul>
+          <li>راقبي العلامات التي تدل على الجوع مثل المطرقة أو مص اليد.</li>
+          <li>اتّبعي جدول نوم مرن ولا تجبري الطفل على النوم إذا كان مستيقظًا ومتنبهًا.</li>
+          <li>في الأيام الأولى، يمكن أن يكون الطفل بحاجة للرضاعة كل 2-3 ساعات.</li>
+          <li>حافظي على بيئة هادئة قبل النوم لتسهيل الاسترخاء.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>قراءة بكاء الطفل</h2>
+        <p>البكاء لغة الطفل، وتعلّم تفسيرها مهم جدًا.</p>
+        <ul>
+          <li>بكاء الجوع عادة ما يكون متقطعًا ومتزايدًا.</li>
+          <li>بكاء الألم قد يكون حادًا ومستمراً، مع انفعال الوجه.</li>
+          <li>بكاء الملل أو الرغبة بالتواصل يكون أقل حدة وقد يتوقف عند الاهتمام.</li>
+          <li>إذا تكرر بكاء الطفل بشكل كبير ولم يتوقف مع التهدئة، فقد يكون الوقت مناسبًا لزيارة الطبيب.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>متى يحتاج الطفل إلى دكتور؟</h2>
+      <p>هناك علامات تحتاج إلى استشارة طبية سريعة:</p>
+      <ul>
+        <li>إذا كان بكاؤه لا يتوقف لأكثر من ساعتين رغم محاولات التهدئة.</li>
+        <li>إذا كان يتقيأ باستمرار أو يعاني من حمى.</li>
+        <li>إذا ظهرت علامات جفاف مثل قلة التبول أو فم جاف.</li>
+        <li>إذا بدا متعبًا جدًا أو بالكاد يستجيب للمحيط.</li>
+      </ul>
+      <p class="note">الخوف طبيعي كثيرًا للأم الجديدة، ولكن الفهم والمعلومة الصحيحة يساعدان على تقليل القلق بشكل كبير.</p>
+    </div>
+
+    <div class="section">
+      <h2>رسالة للأم الجديدة</h2>
+      <p>كونك أمًا جديدًا يعني أنكِ تتعلمين من كل موقف. الأخطاء الصغيرة جزء من الرحلة، والأهم هو الحب والاهتمام اللذين تمنحينهما لطفلك.</p>
+      <ul>
+        <li>لا داعي للضغط على نفسك، ستتحسنين أكثر مع الوقت.</li>
+        <li>استعيني بالدعم المتاح حولك، واطلبي المساعدة عندما تحتاجينها.</li>
+        <li>مهارات رعاية الطفل تتطوّر بالممارسة، فأنتِ لست وحدك في التعلم.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

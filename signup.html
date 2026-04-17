@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>إنشاء حساب</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      background-color: #8B6FB3;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+      text-align: center;
+      color: white;
+      margin-bottom: 20px;
+      font-size: 30px;
+    }
+
+    .input-group {
+      margin-bottom: 14px;
+    }
+
+    label {
+      display: block;
+      color: white;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px 14px;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .error {
+      margin-top: 6px;
+      font-size: 13px;
+      color: #ffd7d7;
+    }
+
+    .success {
+      color: #eaffea;
+      text-align: center;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .general-error {
+      color: #fff0f0;
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 12px;
+      min-height: 22px;
+    }
+
+    .btn {
+      width: 100%;
+      background: white;
+      color: #8B6FB3;
+      border: none;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .bottom-text {
+      text-align: center;
+      margin-top: 15px;
+      color: white;
+      font-size: 14px;
+    }
+
+    .bottom-text a {
+      color: white;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .assessment-section {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 18px;
+      border-radius: 16px;
+      margin-top: 20px;
+    }
+
+    .assessment-section h3 {
+      color: white;
+      margin-bottom: 14px;
+      font-size: 18px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-auth">
+  <div class="container">
+    <h2>إنشاء حساب</h2>
+    <nav class="main-nav">
+      <a href="index.html">الرئيسية</a>
+      <a href="services.html">الخدمات</a>
+      <a href="about.html">من نحن</a>
+      <a href="online-services.html">أونلاين</a>
+      <a href="community.html">مجتمع الأمهات</a>
+      <a href="privacy-policy.html">الخصوصية</a>
+      <a href="login.html">تسجيل الدخول</a>
+    </nav>
+    <div id="successMessage" class="success"></div>
+    <div id="generalError" class="general-error"></div>
+
+    <form id="signupForm">
+      <div class="input-group">
+        <label for="fullName">الاسم</label>
+        <input type="text" id="fullName">
+        <div class="error" id="fullNameError"></div>
+      </div>
+
+      <div class="input-group">
+        <label for="email">البريد الإلكتروني</label>
+        <input type="email" id="email">
+        <div class="error" id="emailError"></div>
+      </div>
+
+      <div class="input-group">
+        <label for="phone">رقم التليفون</label>
+        <input type="tel" id="phone">
+        <div class="error" id="phoneError"></div>
+      </div>
+
+      <div class="input-group">
+        <label for="age">العمر</label>
+        <input type="number" id="age" min="15" max="60">
+        <div class="error" id="ageError"></div>
+      </div>
+
+      <div class="input-group">
+        <label for="job">الوظيفة</label>
+        <input type="text" id="job">
+        <div class="error" id="jobError"></div>
+      </div>
+
+      <div class="input-group">
+        <label for="childrenCount">عدد الأطفال</label>
+        <input type="number" id="childrenCount" min="0" max="20" value="0">
+        <div class="error" id="childrenCountError"></div>
+      </div>
+
+      <div class="input-group">
+        <label for="status">الحالة</label>
+        <select id="status">
+          <option value="">اختر</option>
+          <option value="pregnant">حامل</option>
+          <option value="mother">أم</option>
+          <option value="new_mother">واضعة حديثًا</option>
+        </select>
+        <div class="error" id="statusError"></div>
+      </div>
+
+      <div id="pregnancyFields" class="hidden">
+        <div class="input-group">
+          <label for="pregnancyMonth">في الشهر الكام؟</label>
+          <select id="pregnancyMonth">
+            <option value="">اختر الشهر</option>
+            <option value="1">الشهر الأول</option>
+            <option value="2">الشهر الثاني</option>
+            <option value="3">الشهر الثالث</option>
+            <option value="4">الشهر الرابع</option>
+            <option value="5">الشهر الخامس</option>
+            <option value="6">الشهر السادس</option>
+            <option value="7">الشهر السابع</option>
+            <option value="8">الشهر الثامن</option>
+            <option value="9">الشهر التاسع</option>
+          </select>
+          <div class="error" id="pregnancyMonthError"></div>
+        </div>
+
+        <div class="input-group">
+          <label for="pregnancyWeeks">أسبوع الحمل الحالي</label>
+          <input type="number" id="pregnancyWeeks" min="1" max="40">
+          <div class="error" id="pregnancyWeeksError"></div>
+        </div>
+      </div>
+
+      <div id="postpartumFields" class="hidden">
+        <div class="input-group">
+          <label for="babyAgeMonths">عمر الطفل بالشهور</label>
+          <input type="number" id="babyAgeMonths" min="0" max="36">
+          <div class="error" id="babyAgeMonthsError"></div>
+        </div>
+
+        <div class="input-group">
+          <label for="deliveryType">نوع الولادة</label>
+          <select id="deliveryType">
+            <option value="">اختر</option>
+            <option value="natural">طبيعية</option>
+            <option value="c_section">قيصرية</option>
+          </select>
+          <div class="error" id="deliveryTypeError"></div>
+        </div>
+      </div>
+
+      <div class="assessment-section">
+        <h3>التقييم الأولي للأم</h3>
+
+        <div class="input-group">
+          <label for="mentalState">الحالة النفسية</label>
+          <select id="mentalState">
+            <option value="">اختر</option>
+            <option value="stable">مستقرة</option>
+            <option value="stressed">مرهقة</option>
+            <option value="anxious">متوترة</option>
+          </select>
+          <div class="error" id="mentalStateError"></div>
+        </div>
+
+        <div class="input-group">
+          <label for="physicalState">الحالة الجسدية</label>
+          <select id="physicalState">
+            <option value="">اختر</option>
+            <option value="good">جيدة</option>
+            <option value="average">متوسطة</option>
+            <option value="weak">ضعيفة</option>
+          </select>
+          <div class="error" id="physicalStateError"></div>
+        </div>
+
+        <div class="input-group">
+          <label for="fatigueLevel">مستوى الإرهاق</label>
+          <select id="fatigueLevel">
+            <option value="">اختر</option>
+            <option value="low">منخفض</option>
+            <option value="medium">متوسط</option>
+            <option value="high">مرتفع</option>
+          </select>
+          <div class="error" id="fatigueLevelError"></div>
+        </div>
+
+        <div class="input-group">
+          <label for="breastfeedingIssues">مشاكل الرضاعة</label>
+          <select id="breastfeedingIssues">
+            <option value="">اختر</option>
+            <option value="none">لا توجد</option>
+            <option value="difficulty">صعوبة في الرضاعة</option>
+            <option value="need_guidance">تحتاج إرشاد</option>
+          </select>
+          <div class="error" id="breastfeedingIssuesError"></div>
+        </div>
+
+        <div class="input-group">
+          <label for="sleepIssues">مشاكل النوم</label>
+          <select id="sleepIssues">
+            <option value="">اختر</option>
+            <option value="good">جيدة</option>
+            <option value="interrupted">مقطعة</option>
+            <option value="bad">سيئة</option>
+          </select>
+          <div class="error" id="sleepIssuesError"></div>
+        </div>
+
+        <div class="input-group">
+          <label for="needSpecialist">هل تحتاجين دعم أخصائي؟</label>
+          <select id="needSpecialist">
+            <option value="">اختر</option>
+            <option value="yes">نعم</option>
+            <option value="no">لا</option>
+          </select>
+          <div class="error" id="needSpecialistError"></div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="password">كلمة المرور</label>
+        <input type="password" id="password">
+        <div class="error" id="passwordError"></div>
+      </div>
+
+      <div class="input-group">
+        <label for="confirmPassword">تأكيد كلمة المرور</label>
+        <input type="password" id="confirmPassword">
+        <div class="error" id="confirmPasswordError"></div>
+      </div>
+
+      <button type="submit" class="btn" id="submitBtn">إنشاء الحساب</button>
+
+      <div class="bottom-text">
+        لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a>
+      </div>
+    </form>
+  </div>
+
+  <script type="module" src="auth.js"></script>
+</body>
+</html>

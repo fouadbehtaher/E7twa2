@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تسجيل الدخول</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      background-color: #8B6FB3;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      padding: 35px 28px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+      text-align: center;
+      color: white;
+      margin-bottom: 25px;
+      font-size: 30px;
+    }
+
+    .input-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      color: white;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .error {
+      margin-top: 6px;
+      font-size: 13px;
+      color: #ffd7d7;
+    }
+
+    .general-error {
+      color: #fff0f0;
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 12px;
+      min-height: 22px;
+    }
+
+    .btn {
+      width: 100%;
+      background: white;
+      color: #8B6FB3;
+      border: none;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background: #f2f2f2;
+    }
+
+    .bottom-text {
+      text-align: center;
+      margin-top: 18px;
+      color: white;
+      font-size: 14px;
+    }
+
+    .bottom-text a {
+      color: white;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-auth">
+  <div class="container">
+    <h2>تسجيل الدخول</h2>
+    <nav class="main-nav">
+      <a href="index.html">الرئيسية</a>
+      <a href="services.html">الخدمات</a>
+      <a href="about.html">من نحن</a>
+      <a href="online-services.html">أونلاين</a>
+      <a href="community.html">مجتمع الأمهات</a>
+      <a href="privacy-policy.html">الخصوصية</a>
+      <a href="signup.html">إنشاء حساب</a>
+    </nav>
+    <div id="generalError" class="general-error"></div>
+
+    <form id="loginForm">
+      <div class="input-group">
+        <label for="loginEmail">البريد الإلكتروني</label>
+        <input type="email" id="loginEmail" placeholder="أدخل بريدك الإلكتروني">
+        <div class="error" id="loginEmailError"></div>
+      </div>
+
+      <div class="input-group">
+        <label for="loginPassword">كلمة المرور</label>
+        <input type="password" id="loginPassword" placeholder="أدخل كلمة المرور">
+        <div class="error" id="loginPasswordError"></div>
+      </div>
+
+      <button type="submit" class="btn" id="loginBtn">تسجيل الدخول</button>
+
+      <div class="bottom-text">
+        ليس لديك حساب؟ <a href="signup.html">إنشاء حساب</a>
+      </div>
+    </form>
+  </div>
+
+  <script type="module" src="auth.js"></script>
+</body>
+</html>

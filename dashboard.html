@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لوحة التحكم - احتواء</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #8B6FB3 0%, #A97EC7 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      color: #8B6FB3;
+      font-size: 28px;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .user-name {
+      color: #333;
+      font-weight: bold;
+    }
+
+    .logout-btn {
+      background: #8B6FB3;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .logout-btn:hover {
+      background: #6d5a8f;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .stat-card h3 {
+      color: #8B6FB3;
+      font-size: 14px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .stat-card .number {
+      font-size: 36px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .stat-card .icon {
+      font-size: 32px;
+      color: #8B6FB3;
+      margin-bottom: 10px;
+    }
+
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .card h2 {
+      color: #8B6FB3;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    .users-list {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .user-item {
+      padding: 15px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border-right: 4px solid #8B6FB3;
+    }
+
+    .user-item h4 {
+      color: #8B6FB3;
+      margin-bottom: 5px;
+    }
+
+    .user-item p {
+      font-size: 13px;
+      color: #666;
+      margin: 3px 0;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+    .status-pregnant {
+      background: #FFE5B4;
+      color: #D4A574;
+    }
+
+    .status-mother {
+      background: #C8E6C9;
+      color: #2E7D32;
+    }
+
+    .status-new-mother {
+      background: #B3E5FC;
+      color: #0277BD;
+    }
+
+    .activity-item {
+      padding: 15px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border-left: 4px solid #8B6FB3;
+    }
+
+    .activity-time {
+      font-size: 12px;
+      color: #999;
+    }
+
+    .activity-text {
+      color: #333;
+      margin-top: 5px;
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table th {
+      background: #8B6FB3;
+      color: white;
+      padding: 12px;
+      text-align: right;
+      font-weight: bold;
+    }
+
+    table td {
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+    }
+
+    table tr:hover {
+      background: #f9f9f9;
+    }
+
+    .empty-state {
+      text-align: center;
+      color: #999;
+      padding: 40px 20px;
+    }
+
+    .empty-state i {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .main-content {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-dashboard">
+  <div class="container">
+    <header>
+      <h1>🎯 لوحة التحكم - احتواء</h1>
+      <div class="user-info">
+        <a href="index.html" class="logout-btn" style="margin-right: 10px;">الرئيسية</a>
+        <a href="services.html" class="logout-btn" style="margin-right: 10px;">الخدمات</a>
+        <a href="about.html" class="logout-btn" style="margin-right: 10px;">من نحن</a>
+        <a href="physical-wellness.html" class="logout-btn" style="margin-right: 10px;">الصحة الجسدية</a>
+        <a href="mental-support.html" class="logout-btn" style="margin-right: 10px;">الدعم النفسي</a>
+        <a href="breastfeeding-nutrition.html" class="logout-btn" style="margin-right: 10px;">الرضاعة والتغذية</a>
+        <a href="baby-care.html" class="logout-btn" style="margin-right: 10px;">ورش رعاية الطفل</a>
+        <a href="self-care.html" class="logout-btn" style="margin-right: 10px;">العناية الشخصية</a>
+        <a href="community.html" class="logout-btn" style="margin-right: 10px;">مجتمع الأمهات</a>
+        <a href="online-services.html" class="logout-btn" style="margin-right: 10px;">خدمات أونلاين</a>
+        <span class="user-name" id="adminName">مشرف النظام</span>
+        <button class="logout-btn" id="logoutBtn">تسجيل الخروج</button>
+      </div>
+    </header>
+
+    <div class="stats">
+      <div class="stat-card">
+        <div class="icon"><i class="fas fa-users"></i></div>
+        <h3>إجمالي المستخدمين</h3>
+        <div class="number" id="totalUsers">0</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon"><i class="fas fa-heartbeat"></i></div>
+        <h3>النساء الحوامل</h3>
+        <div class="number" id="pregnantCount">0</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon"><i class="fas fa-baby"></i></div>
+        <h3>الأمهات الجدد</h3>
+        <div class="number" id="mothersCount">0</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="icon"><i class="fas fa-calendar"></i></div>
+        <h3>التسجيلات اليوم</h3>
+        <div class="number" id="todayCount">0</div>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="card">
+        <h2><i class="fas fa-list"></i> المستخدمون المسجلون</h2>
+        <div class="users-list" id="usersList">
+          <div class="empty-state">
+            <i class="fas fa-user-plus"></i>
+            <p>لا توجد مستخدمون مسجلون حتى الآن</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2><i class="fas fa-history"></i> النشاط الأخير</h2>
+        <div id="activityList">
+          <div class="empty-state">
+            <i class="fas fa-bell"></i>
+            <p>لا يوجد نشاط حتى الآن</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card full-width">
+        <h2><i class="fas fa-table"></i> جدول المستخدمين التفصيلي</h2>
+        <div class="table-container">
+          <table id="usersTable">
+            <thead>
+              <tr>
+                <th>الاسم الكامل</th>
+                <th>البريد الإلكتروني</th>
+                <th>الهاتف</th>
+                <th>العمر</th>
+                <th>الحالة</th>
+                <th>حالة نفسية</th>
+                <th>إرهاق</th>
+                <th>دعم أخصائي</th>
+                <th>تاريخ التسجيل</th>
+              </tr>
+            </thead>
+            <tbody id="usersTableBody">
+              <tr>
+                <td colspan="6" style="text-align: center; color: #999;">
+                  <i class="fas fa-user-plus"></i> لا توجد بيانات
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { auth, db } from "./firebase-config.js";
+
+    const logoutBtn = document.getElementById("logoutBtn");
+    const adminName = document.getElementById("adminName");
+    const usersList = document.getElementById("usersList");
+    const activityList = document.getElementById("activityList");
+    const usersTableBody = document.getElementById("usersTableBody");
+
+    // tحقق من الدخول
+    if (!auth.currentUser) {
+      window.location.href = "login.html";
+    } else {
+      adminName.textContent = auth.currentUser.email || "مشرف النظام";
+      loadUsers();
+    }
+
+    logoutBtn.addEventListener("click", async () => {
+      auth.currentUser = null;
+      localStorage.removeItem('ehtewaa_currentUser');
+      window.location.href = "login.html";
+    });
+
+    let allUsers = [];
+
+    function loadUsers() {
+      try {
+        const users = JSON.parse(localStorage.getItem('ehtewaa_users') || '{}');
+        allUsers = Object.values(users).sort((a, b) => {
+          const dateA = new Date(a.createdAt || 0);
+          const dateB = new Date(b.createdAt || 0);
+          return dateB - dateA;
+        });
+
+        const tableRows = [];
+        const activities = [];
+
+        let pregnantCount = 0;
+        let mothersCount = 0;
+        const today = new Date().toDateString();
+
+        usersList.innerHTML = "";
+        allUsers.forEach((user) => {
+          // إحصائيات
+          if (user.status === "pregnant") pregnantCount++;
+          if (user.status === "mother" || user.status === "new_mother") mothersCount++;
+
+          // بنية المستخدم
+          const userDiv = document.createElement("div");
+          userDiv.className = "user-item";
+          
+          const statusKey = {
+            "pregnant": "حامل",
+            "mother": "أم",
+            "new_mother": "أم جديدة"
+          }[user.status] || user.status;
+
+          const statusClass = `status-${user.status}`;
+
+          userDiv.innerHTML = `
+            <h4>${user.fullName}</h4>
+            <p><strong>البريد:</strong> ${user.email}</p>
+            <p><strong>الهاتف:</strong> ${user.phone}</p>
+            <p><strong>الوظيفة:</strong> ${user.job}</p>
+            <p><strong>الحالة النفسية:</strong> ${formatAssessmentValue(user.mentalState)}</p>
+            <p><strong>دعم أخصائي:</strong> ${formatAssessmentValue(user.needSpecialist)}</p>
+            <span class="status-badge ${statusClass}">${statusKey}</span>
+          `;
+          usersList.appendChild(userDiv);
+
+          // جدول
+          const createdDate = user.createdAt ? new Date(user.createdAt).toLocaleDateString('ar-EG') : 'غير معروف';
+          const row = `
+            <tr>
+              <td>${user.fullName}</td>
+              <td>${user.email}</td>
+              <td>${user.phone}</td>
+              <td>${user.age}</td>
+              <td><span class="status-badge ${statusClass}">${statusKey}</span></td>
+              <td>${formatAssessmentValue(user.mentalState)}</td>
+              <td>${formatAssessmentValue(user.fatigueLevel)}</td>
+              <td>${formatAssessmentValue(user.needSpecialist)}</td>
+              <td>${createdDate}</td>
+            </tr>
+          `;
+          tableRows.push(row);
+
+          // نشاط
+          const createdTime = user.createdAt ? new Date(user.createdAt).toLocaleString('ar-EG') : 'غير معروف';
+          const activity = `
+            <div class="activity-item">
+              <div class="activity-time">${createdTime}</div>
+              <div class="activity-text">
+                <strong>${user.fullName}</strong> قام بالتسجيل - ${statusKey}
+              </div>
+            </div>
+          `;
+          activities.push(activity);
+        });
+
+        // تحديث الإحصائيات
+        document.getElementById("totalUsers").textContent = allUsers.length;
+        document.getElementById("pregnantCount").textContent = pregnantCount;
+        document.getElementById("mothersCount").textContent = mothersCount;
+        
+        // حساب التسجيلات اليوم
+        const todayCount = allUsers.filter(u => {
+          if (!u.createdAt) return false;
+          return new Date(u.createdAt).toDateString() === today;
+        }).length;
+        document.getElementById("todayCount").textContent = todayCount;
+
+        // تحديث الجدول
+        if (tableRows.length > 0) {
+          usersTableBody.innerHTML = tableRows.join("");
+        } else {
+          usersTableBody.innerHTML = `
+            <tr>
+              <td colspan="9" style="text-align: center; color: #999;">
+                <i class="fas fa-user-plus"></i> لا توجد بيانات
+              </td>
+            </tr>
+          `;
+        }
+
+        // تحديث النشاط
+        if (activities.length > 0) {
+          activityList.innerHTML = activities.slice(0, 5).join("");
+        } else {
+          activityList.innerHTML = `
+            <div class="empty-state">
+              <i class="fas fa-bell"></i>
+              <p>لا يوجد نشاط حتى الآن</p>
+            </div>
+          `;
+        }
+
+      } catch (error) {
+        console.error("خطأ في تحميل البيانات:", error);
+        usersList.innerHTML = `<div class="empty-state"><p>خطأ في تحميل البيانات</p></div>`;
+      }
+    }
+
+    function formatAssessmentValue(value) {
+      const mapping = {
+        stable: 'مستقرة',
+        stressed: 'مرهقة',
+        anxious: 'متوترة',
+        good: 'جيدة',
+        average: 'متوسطة',
+        weak: 'ضعيفة',
+        low: 'منخفض',
+        medium: 'متوسط',
+        high: 'مرتفع',
+        none: 'لا توجد',
+        difficulty: 'صعوبة في الرضاعة',
+        need_guidance: 'تحتاج إرشاد',
+        interrupted: 'مقطعة',
+        bad: 'سيئة',
+        yes: 'نعم',
+        no: 'لا'
+      };
+      return mapping[value] || value || 'غير محدد';
+    }
+  </script>
+</body>
+</html>

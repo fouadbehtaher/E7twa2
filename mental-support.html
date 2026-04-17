@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الدعم النفسي والعاطفي - احتواء</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #7c55b8 0%, #9b79c8 100%);
+      color: #fff;
+      padding: 22px;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    header h1 {
+      font-size: 32px;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    header a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #fff;
+      color: #8b6fb3;
+      padding: 12px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .intro,
+    .section {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 22px;
+      padding: 24px;
+      margin-bottom: 22px;
+    }
+
+    .intro p,
+    .section p {
+      line-height: 2;
+      color: #f8eefb;
+    }
+
+    .section h2 {
+      font-size: 24px;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+
+    .section ul {
+      list-style: inside disc;
+      color: #f2e9ff;
+      line-height: 1.9;
+      padding-left: 0;
+    }
+
+    .section li {
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      color: #ffdd8a;
+      font-weight: bold;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .action-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .action-link,
+    .pay-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: #fff;
+      color: #7c55b8;
+      text-decoration: none;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    .locked {
+      opacity: 0.65;
+      pointer-events: none;
+    }
+
+    .status-note {
+      color: #ffecb0;
+      font-weight: bold;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-mental">
+  <div class="container">
+    <header>
+      <h1>الدعم النفسي والعاطفي</h1>
+      <nav class="main-nav">
+        <a href="index.html">الرئيسية</a>
+        <a href="services.html">الخدمات</a>
+        <a href="about.html">من نحن</a>
+        <a href="community.html">مجتمع الأمهات</a>
+        <a href="online-services.html">أونلاين</a>
+        <a href="privacy-policy.html">الخصوصية</a>
+      </nav>
+      <a href="index.html"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a>
+    </header>
+
+    <div class="section" id="mentalAccessBox">
+      <h2>الوصول إلى الدعم النفسي</h2>
+      <p id="accessStatusText">جميع مزايا وروابط الدعم النفسي داخل الموقع متاحة الآن مجانًا لكل الزائرات.</p>
+      <div class="action-links">
+        <a href="online-services.html" class="action-link">حجز جلسة نفسية أونلاين</a>
+        <a href="community.html" class="action-link">الانضمام إلى الدعم الجماعي</a>
+      </div>
+      <p class="status-note" id="accessStatusNote">الخدمة مفتوحة مباشرة بدون خطوات إضافية أو رسوم.</p>
+    </div>
+
+    <div class="intro">
+      <p>هذه الصفحة تقدم لكِ منصة دعم نفسي وعاطفي مع جلسات فردية وجماعية، وتمارين لتعزيز الثقة بالنفس كأم، مع رسالة مهمة: <span class="highlight">أنتِ لستِ وحدك</span> ولا أحد يمتلك نفس تجربتك تمامًا.</p>
+    </div>
+
+    <div class="section">
+      <h2>جلسات فردية مع أخصائية نفسية</h2>
+      <p>الجلسات الفردية توفر مساحة آمنة للتحدث عن مشاعرك ومخاوفك بدون حكم. الأخصائية النفسية تساعدك على:</p>
+      <ul>
+        <li>التعرف على مشاعر الحزن، القلق، والإرهاق بعد الولادة.</li>
+        <li>بناء آليات تعامُل شخصية مع الضغوط اليومية.</li>
+        <li>تحسين العلاقة بينك وبين نفسك وطفلك.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>جلسات جماعية بين الأمهات</h2>
+      <p>الجلسات الجماعية تمنحك فرصة مشاركة التجارب مع أمهات أخريات وتلقّي الدعم المتبادل.</p>
+      <ul>
+        <li>تعرفي على قصص أمهات يمررن بنفس التحديات.</li>
+        <li>تبادلي نصائح عملية حول الرضاعة، النوم، والتوازن العاطفي.</li>
+        <li>استفيدي من شعور الانتماء إلى مجموعة تفهم حالتك.</li>
+      </ul>
+    </div>
+
+    <div class="grid">
+      <div class="section">
+        <h2>جلسات زيادة الثقة بالنفس</h2>
+        <p>التحول إلى أم جديد يمكن أن يضعك تحت ضغط كبير. هذه الجلسات تركز على بناء ثقتك الذاتية كأم.</p>
+        <ul>
+          <li>تحديد نقاط قوتك ودعمها.</li>
+          <li>العمل على تعزيز الصورة الذاتية بطريقة لطيفة ومحفزة.</li>
+          <li>التأكيد على أن كل أم تتعلم وتتطور مع الوقت.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>رسالة مهمة</h2>
+        <p>إذا شعرتِ أن أحدًا لا يفهم ما تمرين به، فهذه الرسالة لكِ:</p>
+        <ul>
+          <li>مشاعرك حقيقية وقيمة، وليس عليك أن تثبتي شيء لأحد.</li>
+          <li>العناية بنفسك ليست رفاهية، بل ضرورة لتكوني قوية لطفلك.</li>
+          <li>الدعم النفسي لا يعني ضعفًا، بل خطوة ذكية نحو التعافي.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>كيف تبدأين</h2>
+      <p>ابدئي بخطوات بسيطة لتجربة الدعم النفسي والعاطفي:</p>
+      <ul>
+        <li>اختاري جلسة فردية إذا كنتِ تحتاجين الخصوصية والتركيز الكامل.</li>
+        <li>انضمي إلى جلسة جماعية إذا كنتِ تريدين الدعم الاجتماعي وتبادل الخبرات.</li>
+        <li>احفظي للمواعيد مساحة راحة ومتابعة لتأكدي من الاستمرارية.</li>
+      </ul>
+    </div>
+    <div class="section" id="premiumLinksBox">
+      <h2>روابط وخدمات الدعم النفسي</h2>
+      <p>يمكنك استخدام الروابط السريعة التالية مباشرة للوصول إلى خدمات الدعم النفسي داخل الموقع.</p>
+      <div class="action-links">
+        <a href="online-services.html" class="action-link">حجز جلسة نفسية أونلاين</a>
+        <a href="community.html" class="action-link">الانضمام إلى الدعم الجماعي</a>
+        <a href="services.html" class="action-link">استعراض باقة الدعم الكاملة</a>
+      </div>
+      <p class="status-note" id="premiumAccessNote">كل الروابط التالية متاحة الآن مباشرة.</p>
+    </div>
+  </div>
+</body>
+</html>

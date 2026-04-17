@@ -1,0 +1,28 @@
+رفع المشروع إلى GitHub
+======================
+
+بعد تجهيز المستودع محليًا، نفذ الخطوات التالية:
+
+1. أنشئ مستودعًا جديدًا فارغًا على GitHub.
+2. انسخ رابط المستودع، وسيكون شكله مثل:
+
+   https://github.com/fouadbehtaher/ehtewaa-maternity-app.git
+
+3. اربط المستودع المحلي بالبعيد:
+
+   git remote add origin https://github.com/fouadbehtaher/ehtewaa-maternity-app.git
+
+4. ارفع الفرع الرئيسي:
+
+   git push -u origin main
+
+إذا كنت تريد استخدام نفس الاسم الذي جُهز له المشروع هنا، أنشئ المستودع بهذا الاسم:
+
+   ehtewaa-maternity-app
+
+إذا كان PowerShell يسبب مشكلة مع npm، فهذا لا يؤثر على git أو على الرفع.
+
+نشر الموقع عبر GitHub Pages:
+- بعد أول push، افتح إعدادات المستودع على GitHub.
+- من قسم Pages اختر النشر عبر GitHub Actions.
+- ملف workflow موجود بالفعل داخل .github/workflows/pages.yml

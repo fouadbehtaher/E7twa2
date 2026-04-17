@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>خدمات أونلاين - احتواء</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #4b2f82 0%, #8766c6 100%);
+      color: #fff;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    header h1 {
+      font-size: 32px;
+      color: #fff;
+    }
+
+    header a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: #4b2f82;
+      padding: 12px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .intro,
+    .section,
+    .quiz-card,
+    .result-card {
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 22px;
+      padding: 24px;
+      margin-bottom: 22px;
+    }
+
+    .intro p,
+    .section p,
+    .quiz-card p,
+    .result-card p {
+      line-height: 1.8;
+      color: #f5efff;
+    }
+
+    .section h2,
+    .quiz-card h2,
+    .result-card h2 {
+      font-size: 24px;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+
+    .quiz-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+      text-align: right;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #f5efff;
+      font-weight: bold;
+    }
+
+    select,
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 15px;
+    }
+
+    select {
+      background: rgba(255,255,255,0.9);
+      color: #3b205d;
+    }
+
+    .submit-btn {
+      background: #fff;
+      color: #4b2f82;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: #f4f4f4;
+    }
+
+    .result-card {
+      display: none;
+    }
+
+    .result-card.active {
+      display: block;
+    }
+
+    .suggestion {
+      margin-top: 12px;
+      padding: 16px;
+      background: rgba(255,255,255,0.18);
+      border-radius: 14px;
+      color: #fff;
+      line-height: 1.8;
+    }
+
+    .suggestion strong {
+      color: #ffe99d;
+    }
+
+    .note {
+      margin-top: 12px;
+      color: #ffe8b8;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-online">
+  <div class="container">
+    <header>
+      <h1>خدمات أونلاين</h1>
+      <nav class="main-nav">
+        <a href="index.html">الرئيسية</a>
+        <a href="services.html">الخدمات</a>
+        <a href="about.html">من نحن</a>
+        <a href="community.html">مجتمع الأمهات</a>
+        <a href="online-services.html">أونلاين</a>
+        <a href="privacy-policy.html">الخصوصية</a>
+      </nav>
+      <a href="index.html"><i class="fas fa-home"></i> العودة للرئيسية</a>
+    </header>
+
+    <div class="intro">
+      <p>خدمات أونلاين مصممة للأمهات اللاتي يحتاجن دعمًا في المنزل أو لا يستطعن الوصول للمركز. لديك استبيان بسيط يساعدنا على تحديد الخدمة الأكثر مناسبة لكِ.</p>
+    </div>
+
+    <div class="section">
+      <h2>لماذا تختارين الخدمة الأونلاين؟</h2>
+      <ul>
+        <li>توفير وقت السفر والجهد.</li>
+        <li>دعم نفسي وتوجيه غذائي من المنزل.</li>
+        <li>جلسات مرنة مع المدربين والأخصائيين.</li>
+        <li>متابعة شخصية بناءً على احتياجك الفعلي.</li>
+      </ul>
+    </div>
+
+    <div class="quiz-card">
+      <h2>استبيان سريع</h2>
+      <div class="quiz-grid">
+        <div class="form-group">
+          <label for="onlineMentalState">الحالة النفسية</label>
+          <select id="onlineMentalState">
+            <option value="">اختر</option>
+            <option value="stable">مستقرة</option>
+            <option value="stressed">مرهقة</option>
+            <option value="anxious">متوترة</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="onlineFatigueLevel">مستوى الإرهاق</label>
+          <select id="onlineFatigueLevel">
+            <option value="">اختر</option>
+            <option value="low">منخفض</option>
+            <option value="medium">متوسط</option>
+            <option value="high">مرتفع</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="onlineDeliveryType">نوع الولادة</label>
+          <select id="onlineDeliveryType">
+            <option value="">اختر</option>
+            <option value="normal">طبيعي</option>
+            <option value="cesarean">قيصرية</option>
+            <option value="other">أخرى</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="onlineBreastfeedingIssues">مشاكل الرضاعة</label>
+          <select id="onlineBreastfeedingIssues">
+            <option value="">اختر</option>
+            <option value="none">لا توجد</option>
+            <option value="difficulty">صعوبة في الرضاعة</option>
+            <option value="need_guidance">تحتاج إرشاد</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="onlineSleepIssues">مشاكل النوم</label>
+          <select id="onlineSleepIssues">
+            <option value="">اختر</option>
+            <option value="good">جيدة</option>
+            <option value="interrupted">مقطعة</option>
+            <option value="bad">سيئة</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="onlineFamilySupport">الدعم الأسري</label>
+          <select id="onlineFamilySupport">
+            <option value="">اختر</option>
+            <option value="strong">قوي</option>
+            <option value="moderate">متوسط</option>
+            <option value="weak">ضعيف</option>
+          </select>
+        </div>
+      </div>
+
+      <button id="onlineQuizBtn" class="submit-btn">احصل على اقتراح الخدمة المناسبة</button>
+    </div>
+
+    <div id="onlineResult" class="result-card">
+      <h2>الاقتراح المناسب لكِ</h2>
+      <div class="suggestion" id="onlineSuggestionText"></div>
+      <p class="note">يمكنك استخدام هذا الاقتراح لحجز خدمة أونلاين أو زيارة المركز إذا شعرتِ أنها الأنسب لكِ.</p>
+    </div>
+  </div>
+
+  <script>
+    const onlineQuizBtn = document.getElementById('onlineQuizBtn');
+    const onlineSuggestionText = document.getElementById('onlineSuggestionText');
+    const onlineResult = document.getElementById('onlineResult');
+
+    onlineQuizBtn.addEventListener('click', () => {
+      const mentalState = document.getElementById('onlineMentalState').value;
+      const fatigueLevel = document.getElementById('onlineFatigueLevel').value;
+      const deliveryType = document.getElementById('onlineDeliveryType').value;
+      const breastfeedingIssues = document.getElementById('onlineBreastfeedingIssues').value;
+      const sleepIssues = document.getElementById('onlineSleepIssues').value;
+      const familySupport = document.getElementById('onlineFamilySupport').value;
+
+      if (!mentalState || !fatigueLevel || !deliveryType || !breastfeedingIssues || !sleepIssues || !familySupport) {
+        onlineSuggestionText.innerHTML = '<strong>من فضلك أكملي كل الأسئلة أولاً.</strong> ذلك يساعدنا في اختيار الخدمة الأنسب لكِ.';
+        onlineResult.classList.add('active');
+        return;
+      }
+
+      const suggestions = [];
+
+      if (mentalState === 'anxious' || mentalState === 'stressed') {
+        suggestions.push('جلسة دعم نفسي أونلاين لتخفيف القلق والتوتر ومتابعة حالة الأم النفسية.');
+      }
+
+      if (fatigueLevel === 'high' || sleepIssues === 'interrupted' || sleepIssues === 'bad') {
+        suggestions.push('خطة راحة شخصية مع نصائح نوم ودعم يومي لحفظ الطاقة والتغلب على الإرهاق.');
+      }
+
+      if (breastfeedingIssues === 'difficulty' || breastfeedingIssues === 'need_guidance') {
+        suggestions.push('استشارة رضاعة طبيعية أونلاين لمتابعة وضعية الرضاعة وحل أي مشكلات.');
+      }
+
+      if (deliveryType === 'cesarean') {
+        suggestions.push('برنامج تعافي ما بعد القيصرية يتضمن تمارين بلطف ودعم غذائي مناسب.');
+      }
+
+      if (familySupport === 'weak') {
+        suggestions.push('جلسة دعم أسري أونلاين تساعد الزوج أو العائلة في تقديم الدعم المطلوب.');
+      }
+
+      if (suggestions.length === 0) {
+        suggestions.push('خطة دعم متكاملة تشمل جلسة استشارية أونلاين، برنامج غذائي، ومتابعة الراحة.');
+      }
+
+      onlineSuggestionText.innerHTML = suggestions.map(item => `<p>• ${item}</p>`).join('');
+      onlineResult.classList.add('active');
+    });
+  </script>
+</body>
+</html>
