@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الدعم النفسي والعاطفي - احتواء</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #7c55b8 0%, #9b79c8 100%);
+      color: #fff;
+      padding: 22px;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    header h1 {
+      font-size: 32px;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    header a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #fff;
+      color: #8b6fb3;
+      padding: 12px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .intro,
+    .section {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 22px;
+      padding: 24px;
+      margin-bottom: 22px;
+    }
+
+    .intro p,
+    .section p {
+      line-height: 2;
+      color: #f8eefb;
+    }
+
+    .section h2 {
+      font-size: 24px;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+
+    .section ul {
+      list-style: inside disc;
+      color: #f2e9ff;
+      line-height: 1.9;
+      padding-left: 0;
+    }
+
+    .section li {
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      color: #ffdd8a;
+      font-weight: bold;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .action-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .action-link,
+    .pay-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: #fff;
+      color: #7c55b8;
+      text-decoration: none;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    .locked {
+      opacity: 0.65;
+      pointer-events: none;
+    }
+
+    .status-note {
+      color: #ffecb0;
+      font-weight: bold;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-mental">
+  <div class="container">
+    <header>
+      <h1>الدعم النفسي والعاطفي</h1>
+      <nav class="main-nav">
+        <a href="index.html">الرئيسية</a>
+        <a href="services.html">الخدمات</a>
+        <a href="about.html">من نحن</a>
+        <a href="community.html">مجتمع الأمهات</a>
+      </nav>
+      <a href="index.html"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a>
+    </header>
+
+    <div class="section" id="subscriptionStatusBox">
+      <h2>اشتراك الدعم النفسي</h2>
+      <p id="subscriptionStatusText">هذه الخدمة متاحة باشتراك قدره 200 جنيه لكل حساب.</p>
+      <div class="action-links">
+        <button type="button" class="pay-btn" id="activateSubscriptionBtn">طلب تفعيل الاشتراك 200 جنيه</button>
+        <a href="login.html" class="action-link" id="loginSubscriptionLink">تسجيل الدخول للحساب</a>
+      </div>
+      <p class="status-note" id="subscriptionStatusNote">فعّلي الاشتراك لفتح مزايا وروابط الدعم النفسي.</p>
+    </div>
+
+    <div class="intro">
+      <p>هذه الصفحة تقدم لكِ منصة دعم نفسي وعاطفي مع جلسات فردية وجماعية، وتمارين لتعزيز الثقة بالنفس كأم، مع رسالة مهمة: <span class="highlight">أنتِ لستِ وحدك</span> ولا أحد يمتلك نفس تجربتك تمامًا.</p>
+    </div>
+
+    <div class="section-image">
+      <img src="image4.png" alt="جلسة دعم نفسي">
+    </div>
+
+    <div class="section">
+      <h2>جلسات فردية مع أخصائية نفسية</h2>
+      <p>الجلسات الفردية توفر مساحة آمنة للتحدث عن مشاعرك ومخاوفك بدون حكم. الأخصائية النفسية تساعدك على:</p>
+      <ul>
+        <li>التعرف على مشاعر الحزن، القلق، والإرهاق بعد الولادة.</li>
+        <li>بناء آليات تعامُل شخصية مع الضغوط اليومية.</li>
+        <li>تحسين العلاقة بينك وبين نفسك وطفلك.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>جلسات جماعية بين الأمهات</h2>
+      <p>الجلسات الجماعية تمنحك فرصة مشاركة التجارب مع أمهات أخريات وتلقّي الدعم المتبادل.</p>
+      <ul>
+        <li>تعرفي على قصص أمهات يمررن بنفس التحديات.</li>
+        <li>تبادلي نصائح عملية حول الرضاعة، النوم، والتوازن العاطفي.</li>
+        <li>استفيدي من شعور الانتماء إلى مجموعة تفهم حالتك.</li>
+      </ul>
+    </div>
+
+    <div class="grid">
+      <div class="section">
+        <h2>جلسات زيادة الثقة بالنفس</h2>
+        <p>التحول إلى أم جديد يمكن أن يضعك تحت ضغط كبير. هذه الجلسات تركز على بناء ثقتك الذاتية كأم.</p>
+        <ul>
+          <li>تحديد نقاط قوتك ودعمها.</li>
+          <li>العمل على تعزيز الصورة الذاتية بطريقة لطيفة ومحفزة.</li>
+          <li>التأكيد على أن كل أم تتعلم وتتطور مع الوقت.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>رسالة مهمة</h2>
+        <p>إذا شعرتِ أن أحدًا لا يفهم ما تمرين به، فهذه الرسالة لكِ:</p>
+        <ul>
+          <li>مشاعرك حقيقية وقيمة، وليس عليك أن تثبتي شيء لأحد.</li>
+          <li>العناية بنفسك ليست رفاهية، بل ضرورة لتكوني قوية لطفلك.</li>
+          <li>الدعم النفسي لا يعني ضعفًا، بل خطوة ذكية نحو التعافي.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>كيف تبدأين</h2>
+      <p>ابدئي بخطوات بسيطة لتجربة الدعم النفسي والعاطفي:</p>
+      <ul>
+        <li>اختاري جلسة فردية إذا كنتِ تحتاجين الخصوصية والتركيز الكامل.</li>
+        <li>انضمي إلى جلسة جماعية إذا كنتِ تريدين الدعم الاجتماعي وتبادل الخبرات.</li>
+        <li>احفظي للمواعيد مساحة راحة ومتابعة لتأكدي من الاستمرارية.</li>
+      </ul>
+    </div>
+    <div class="section" id="premiumLinksBox">
+      <h2>روابط ومزايا الدعم النفسي</h2>
+      <p>بعد تفعيل الاشتراك يمكنك استخدام الروابط السريعة التالية للوصول إلى خدمات الدعم النفسي داخل الموقع.</p>
+      <div class="action-links">
+        <a href="online-services.html" class="action-link premium-link locked">حجز جلسة نفسية أونلاين</a>
+        <a href="community.html" class="action-link premium-link locked">الانضمام إلى الدعم الجماعي</a>
+        <a href="services.html" class="action-link premium-link locked">استعراض باقة الدعم الكاملة</a>
+      </div>
+      <p class="status-note" id="premiumAccessNote">الروابط مقفلة حتى يتم تفعيل اشتراك 200 جنيه على الحساب.</p>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="footer-follow">
+      <span>تابعنا على</span>
+      <a href="https://www.instagram.com/ehtwaa___?igsh=cXZ5bmt4amhpaWly" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram</a>
+      <a href="https://vm.tiktok.com/ZS9Yd4nB4AF1u-1vo3m/" target="_blank" rel="noopener noreferrer" class="footer-link">TikTok</a>
+      <a href="https://www.facebook.com/share/18BAinqGhM/" target="_blank" rel="noopener noreferrer" class="footer-link">Facebook</a>
+    </div>
+    <div class="footer-rights">جميع الحقوق محفوظة لدي فريق احتواء</div>
+  </footer>
+
+  <script>
+    const MENTAL_SUBSCRIPTION_PRICE = 200;
+    const activateSubscriptionBtn = document.getElementById("activateSubscriptionBtn");
+    const loginSubscriptionLink = document.getElementById("loginSubscriptionLink");
+    const subscriptionStatusText = document.getElementById("subscriptionStatusText");
+    const subscriptionStatusNote = document.getElementById("subscriptionStatusNote");
+    const premiumAccessNote = document.getElementById("premiumAccessNote");
+    const premiumLinks = Array.from(document.querySelectorAll(".premium-link"));
+
+    function getCurrentUser() {
+      const savedUser = localStorage.getItem("ehtewaa_currentUser");
+      return savedUser ? JSON.parse(savedUser) : null;
+    }
+
+    function getStoredUsers() {
+      return JSON.parse(localStorage.getItem("ehtewaa_users") || "{}");
+    }
+
+    function getCurrentUserData() {
+      const currentUser = getCurrentUser();
+      if (!currentUser) return null;
+      const users = getStoredUsers();
+      return users[currentUser.uid] || null;
+    }
+
+    function setPremiumLocked(locked) {
+      premiumLinks.forEach((link) => {
+        link.classList.toggle("locked", locked);
+      });
+    }
+
+    function requestSubscription() {
+      const currentUser = getCurrentUser();
+      if (!currentUser) return;
+
+      const users = getStoredUsers();
+      const userData = users[currentUser.uid];
+      if (!userData) return;
+
+      if (userData.mentalSubscriptionPending || userData.mentalSubscriptionActive) {
+        renderSubscriptionState();
+        return;
+      }
+
+      users[currentUser.uid] = {
+        ...userData,
+        mentalSubscriptionPrice: MENTAL_SUBSCRIPTION_PRICE,
+        mentalSubscriptionPending: true,
+        mentalSubscriptionRequestedAt: userData.mentalSubscriptionRequestedAt || new Date().toISOString()
+      };
+
+      localStorage.setItem("ehtewaa_users", JSON.stringify(users));
+      renderSubscriptionState();
+    }
+
+    function renderSubscriptionState() {
+      const currentUser = getCurrentUser();
+      const userData = getCurrentUserData();
+
+      if (!currentUser || !userData) {
+        activateSubscriptionBtn.style.display = "inline-flex";
+        activateSubscriptionBtn.disabled = true;
+        loginSubscriptionLink.style.display = "inline-flex";
+        subscriptionStatusText.textContent = `سجلي الدخول أولًا ثم فعّلي اشتراك الدعم النفسي بقيمة ${MENTAL_SUBSCRIPTION_PRICE} جنيه.`;
+        subscriptionStatusNote.textContent = "الحساب غير مسجل الدخول حاليًا.";
+        premiumAccessNote.textContent = "الروابط مقفلة حتى تسجيل الدخول وتفعيل الاشتراك.";
+        setPremiumLocked(true);
+        return;
+      }
+
+      loginSubscriptionLink.style.display = "none";
+
+      if (userData.mentalSubscriptionActive) {
+        activateSubscriptionBtn.style.display = "none";
+        const activatedAt = userData.mentalSubscriptionActivatedAt
+          ? new Date(userData.mentalSubscriptionActivatedAt).toLocaleDateString("ar-EG")
+          : "اليوم";
+        subscriptionStatusText.textContent = `اشتراكك مفعل بقيمة ${MENTAL_SUBSCRIPTION_PRICE} جنيه، ويمكنك الآن استخدام مزايا وروابط الدعم النفسي.`;
+        subscriptionStatusNote.textContent = `تم التفعيل بتاريخ ${activatedAt}.`;
+        premiumAccessNote.textContent = "كل الروابط التالية متاحة الآن على هذا الحساب.";
+        setPremiumLocked(false);
+        return;
+      }
+
+      if (userData.mentalSubscriptionPending) {
+        activateSubscriptionBtn.style.display = "inline-flex";
+        activateSubscriptionBtn.disabled = true;
+        subscriptionStatusText.textContent = "تم إرسال طلب تفعيل الاشتراك. سيتم فتح المزايا بعد موافقة المدير.";
+        subscriptionStatusNote.textContent = "الطلب قيد المراجعة حاليًا.";
+        premiumAccessNote.textContent = "الروابط مقفلة حتى يتم قبول الطلب.";
+        setPremiumLocked(true);
+        return;
+      }
+
+      activateSubscriptionBtn.style.display = "inline-flex";
+      activateSubscriptionBtn.disabled = false;
+      subscriptionStatusText.textContent = `هذا الحساب غير مشترك بعد. أرسلي طلب تفعيل بقيمة ${MENTAL_SUBSCRIPTION_PRICE} جنيه.`;
+      subscriptionStatusNote.textContent = "بعد الموافقة سيتم فتح الروابط والمزايا الخاصة بالدعم النفسي.";
+      premiumAccessNote.textContent = "الروابط مقفلة حتى يتم التفعيل.";
+      setPremiumLocked(true);
+    }
+
+    activateSubscriptionBtn.addEventListener("click", requestSubscription);
+    renderSubscriptionState();
+  </script>
+</body>
+</html>

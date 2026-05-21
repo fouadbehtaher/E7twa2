@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>احتواء</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Aref+Ruqaa&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      background-color: #8B6FB3;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px 15px;
+      display: block; /* للسماح بالتمرير الطبيعي على الجوال */
+      position: relative;
+    }
+
+    .logo-corner {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      margin: 0;
+      z-index: 20;
+    }
+
+    .logo-corner.brand-logo {
+      width: 92px;
+      height: 92px;
+      padding: 8px;
+      background: rgba(255,255,255,0.3);
+      border-color: rgba(255,255,255,0.55);
+      box-shadow: 0 18px 36px rgba(0,0,0,0.24);
+    }
+
+    .logo-corner.brand-logo:hover {
+      transform: translateY(-2px) scale(1.08);
+      box-shadow: 0 22px 44px rgba(0,0,0,0.28);
+    }
+
+    @media (max-width: 660px) {
+      .logo-corner {
+        position: static;
+        margin: 0 auto 12px;
+      }
+    }
+
+    .container {
+      color: white;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-family: 'Aref Ruqaa', serif;
+      font-size: clamp(3.5rem, 15vw, 5.2rem);
+      font-weight: normal;
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .brand-title {
+      color: #ffffff;
+      text-shadow: 0 6px 18px rgba(0,0,0,0.25), 0 0 0 rgba(255,255,255,0.25);
+      position: relative;
+      display: inline-block;
+      padding: 0 8px 10px;
+    }
+
+    .brand-title--logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .brand-title--logo img {
+      width: min(220px, 70vw);
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,0.25));
+    }
+
+    .brand-title::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 85%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+      border-radius: 999px;
+    }
+
+    .brand-title--logo::after {
+      display: none;
+    }
+
+    p {
+      font-size: clamp(1.1rem, 4vw, 1.5rem);
+      margin-bottom: 35px;
+      line-height: 2;
+      font-weight: 500;
+    }
+
+    .cta-box {
+      background: rgba(255,255,255,0.22);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 24px;
+      padding: 18px 22px;
+      margin-bottom: 28px;
+      text-align: right;
+    }
+
+    .cta-box p {
+      color: #fdf0ff;
+      line-height: 1.8;
+      margin-bottom: 14px;
+      font-size: 18px;
+    }
+
+    .cta-box .cta-link {
+      display: inline-block;
+      background: #fff;
+      color: #8B6FB3;
+      padding: 12px 18px;
+      border-radius: 20px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+
+    .cta-box .cta-link:hover {
+      transform: translateY(-2px);
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      background: white;
+      color: #8B6FB3;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 25px;
+      font-size: 16px;
+      text-decoration: none;
+      font-weight: bold;
+      min-width: 150px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #f2f2f2;
+      transform: translateY(-2px);
+    }
+
+    .assessment-box {
+      background: rgba(255,255,255,0.13);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 20px;
+      padding: 22px 24px;
+      margin-bottom: 25px;
+      text-align: right;
+    }
+
+    .assessment-box h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+
+    .assessment-box p {
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: #f6f0ff;
+    }
+
+    .assessment-box ul {
+      list-style: inside disc;
+      color: #f6f0ff;
+      line-height: 2;
+      text-align: right;
+      padding-left: 0;
+    }
+
+    .assessment-box li {
+      margin-bottom: 8px;
+    }
+
+    .assessment-form {
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    .form-row {
+      margin-bottom: 14px;
+    }
+
+    .assessment-form label {
+      display: block;
+      color: #f9f2ff;
+      font-size: 15px;
+      margin-bottom: 6px;
+      text-align: right;
+    }
+
+    .assessment-form select,
+    .assessment-form button {
+      width: 100%;
+      padding: 12px 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+
+    .assessment-form select {
+      background: rgba(255,255,255,0.95);
+      color: #3e1f62;
+      margin-bottom: 6px;
+    }
+
+    .assessment-form button {
+      background: #ffffff;
+      color: #8B6FB3;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 8px;
+    }
+
+    .assessment-form button:hover {
+      background: #f2f2f2;
+    }
+
+    .advice-box {
+      margin-top: 18px;
+      padding: 18px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 16px;
+      text-align: right;
+    }
+
+    .advice-box h3 {
+      color: #ffffff;
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+
+    .advice-box ul {
+      list-style: inside disc;
+      color: #f6f0ff;
+      line-height: 1.9;
+      padding-left: 0;
+    }
+
+    .advice-box li {
+      margin-bottom: 8px;
+    }
+
+    .note {
+      margin-top: 15px;
+      color: #ffe8b8;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .welcome-box {
+      display: none;
+      margin-bottom: 25px;
+    }
+
+    .welcome-box h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .social a {
+      margin: 0 10px;
+      font-size: 22px;
+      color: white;
+      text-decoration: none;
+      width: 45px;
+      height: 45px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      transition: 0.3s;
+    }
+
+    .social a:hover {
+      background: white;
+      color: #8B6FB3;
+      transform: scale(1.1);
+    }
+
+    .main-nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .main-nav a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.1);
+      transition: 0.3s;
+      font-size: 14px;
+    }
+
+    .main-nav a:hover {
+      background: rgba(255,255,255,0.3);
+    }
+  </style>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-home">
+  <div class="container">
+    <h1 class="brand-title brand-title--logo">
+      <img src="logo.png" alt="شعار احتواء">
+    </h1>
+    <p>الكل بيهتم بطفلك واحنا بنهتم بيكي 🤍</p>
+    <nav class="main-nav">
+      <a href="./index.html"><i class="fas fa-home"></i> الرئيسية</a>
+      <a href="./services.html">الخدمات</a>
+      <a href="./about.html">من نحن</a>
+      <a href="./community.html">المجتمع</a>
+      <a href="./dashboard.html" id="navDashboard" class="hidden">لوحة التحكم</a>
+    </nav>
+
+    <div class="hero-card">
+      <h2>ابدئي بخطوة مريحة وسهلة</h2>
+      <p>اكتشفي الدعم اللي يناسبك , واحصلي على جلسات مصممة لاحتياجك</p>
+      <div class="quick-grid">
+        <a href="online-services.html" class="feature-card">
+          <h3>استبيان</h3>
+          <p>مباشرة من البيت، اكتشفي الخدمة الأنسب لكِ مع أسئلة بسيطة وسريعة.</p>
+        </a>
+        <a href="community.html" class="feature-card">
+          <h3>مجتمع الأمهات</h3>
+          <p>تواصلي مع امهات يمرّون بتجارب مشابهة لك وشاركي رحلتك معهم</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>روابط سريعة لجميع الأقسام</h2>
+      <div class="quick-grid">
+        <a href="about.html" class="feature-card">
+          <h3>من نحن</h3>
+          <p>تعرفي على هدفنا وكيف نساند الأمهات في رحلتهم.</p>
+        </a>
+        <a href="self-care.html" class="feature-card">
+          <h3>العناية الشخصية</h3>
+          <p>دعمك لتعيدي الشعور بأنوثتك وراحتك النفسية.</p>
+        </a>
+        <a href="breastfeeding-nutrition.html" class="feature-card">
+          <h3>الرضاعة والتغذية</h3>
+          <p>احصلي على استشارات للرضاعة الطبيعية والخطة الغذائية.</p>
+        </a>
+        <a href="mental-support.html" class="feature-card">
+          <h3>الدعم النفسي</h3>
+          <p>جلسات وأنشطة لمساعدتك على استعادة التوازن النفسي.</p>
+        </a>
+        <a href="physical-wellness.html" class="feature-card">
+          <h3>الصحة الجسدية</h3>
+          <p>تعرفي على التمارين والنصائح للتعافي بعد الولادة.</p>
+        </a>
+      </div>
+    </div>
+
+    <div id="authButtons" class="buttons">
+      <a href="login.html" class="btn">تسجيل الدخول</a>
+      <a href="signup.html" class="btn">إنشاء حساب</a>
+    </div>
+
+    <div id="userSection" class="welcome-box">
+      <h2 id="userName">أهلاً بك</h2>
+      <div class="buttons">
+        <button id="logoutBtn" class="btn">تسجيل الخروج</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-follow">
+      <span>تابعنا على</span>
+      <a href="https://www.instagram.com/ehtwaa___?igsh=cXZ5bmt4amhpaWly" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram</a>
+      <a href="https://vm.tiktok.com/ZS9Yd4nB4AF1u-1vo3m/" target="_blank" rel="noopener noreferrer" class="footer-link">TikTok</a>
+      <a href="https://www.facebook.com/share/18BAinqGhM/" target="_blank" rel="noopener noreferrer" class="footer-link">Facebook</a>
+    </div>
+    <div class="footer-rights">جميع الحقوق محفوظة لدي فريق احتواء</div>
+  </footer>
+
+  <script type="module" src="auth.js"></script>
+</body>
+</html>
