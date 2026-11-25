@@ -2,6 +2,11 @@
 
 تطبيق متكامل لدعم النساء الحوامل والأمهات الجدد
 
+![Home page](docs/screenshot-home.png)
+
+*Screenshot: the static front end (`index.html`) rendered locally. Sign-in and data features need your own Firebase project in `firebase-config.js`, so they are not shown here.*
+
+
 ## 🚀 البدء السريع
 
 ### المتطلبات:
